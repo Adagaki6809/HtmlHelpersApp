@@ -1,0 +1,29 @@
+﻿@using HtmlHelpersApp.App_Code
+@{
+    string name = "tom";
+    int age = 33;
+}
+
+<user-info user="tom"></user-info>
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <p>
+        @Html.Label("Name", "Имя") <br />
+        @Html.TextBox("Name")
+    </p>
+    <p>
+        <label>Возраст</label><br />
+        @Html.TextBox("Age", "", new { type = "number" })
+    </p>
+    <p>
+        <a asp-host="dtf.ru/games">Ссылка на Дтф</a>
+        <input type="submit" value="Отправить" />
+    </p>
+    <p>
+        @Html.DropDownList("daytime", Html.GetEnumSelectList(typeof(TimeOfDay)))
+    </p>
+
+    <div header="@name">Первый параграф</div>
+    <div header="@age">Второй параграф</div>
+
+}
